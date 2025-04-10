@@ -1,97 +1,96 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# BeexSports App
 
-# Getting Started
+Una aplicación móvil desarrollada con React Native que permite a los usuarios gestionar su perfil deportivo, buscar complejos deportivos, y participar en partidos adaptados a su nivel.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Características
 
-## Step 1: Start Metro
+- **Autenticación de usuarios**: Registro e inicio de sesión
+- **Perfil de usuario**: Edición de datos y nivel de juego con barra de progreso
+- **Búsqueda de complejos deportivos**: Listado y marcado de favoritos
+- **Gestión de partidos**: Creación, búsqueda y participación
+- **Matchmaking**: Recomendación de partidos según el nivel del usuario
+- **Persistencia local**: Almacenamiento local de datos de perfil y favoritos
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Tecnologías utilizadas
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- React Native
+- TypeScript
+- React Navigation
+- AsyncStorage
+- Context API
 
-```sh
-# Using npm
-npm start
+## Requisitos previos
 
-# OR using Yarn
-yarn start
+- Node.js (versión 18 o superior)
+- npm o yarn
+- JDK 11 o superior
+- Android Studio y/o Xcode (según el sistema operativo)
+- Configuración del entorno de desarrollo para React Native (https://reactnative.dev/docs/environment-setup)
+
+## Instalación
+
+1. Clonar el repositorio:
+```bash
+git clone <url-del-repositorio>
+cd BeexSportsApp
 ```
 
-## Step 2: Build and run your app
+2. Instalar las dependencias:
+```bash
+npm install
+```
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+3. Para instalar en iOS (solo macOS):
+```bash
+cd ios
+pod install
+cd ..
+```
+
+## Ejecución
 
 ### Android
 
-```sh
-# Using npm
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+### iOS (solo macOS)
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Enfoque del proyecto
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+Este proyecto fue desarrollado como parte de un desafío técnico para la posición de React Native Developer en Beex. El enfoque principal fue crear una aplicación modular, con componentes reutilizables y una navegación fluida.
 
-## Step 3: Modify your app
+### Estructura del proyecto
 
-Now that you have successfully run the app, let's make changes!
+- `/app`: Directorio principal de la aplicación
+  - `/components`: Componentes reutilizables
+  - `/context`: Context API para gestión del estado global
+  - `/navigation`: Configuración de navegación
+  - `/screens`: Pantallas de la aplicación
+  - `/services`: Servicios mockeados para simular APIs
+  - `/utils`: Utilidades varias
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### Persistencia de datos
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+Para la persistencia de datos se utiliza AsyncStorage, simulando lo que sería una conexión a un backend real. Los datos de perfil de usuario y complejos favoritos se guardan localmente.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### Patrones de diseño
 
-## Congratulations! :tada:
+- **Context API**: Para gestión del estado global
+- **Custom Hooks**: Para lógica reutilizable
+- **Component Composition**: Para mantener componentes pequeños y reutilizables
+- **Mocks de Servicios**: Para simular APIs y separar la capa de datos
 
-You've successfully run and modified your React Native App. :partying_face:
+## Mejoras futuras
 
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- Implementación de pruebas unitarias e integración
+- Agregar autenticación real con un backend
+- Mejorar animaciones y transiciones
+- Implementar notificaciones para partidos próximos
+- Integración con mapas para visualizar ubicación de complejos
+- Agregar chat interno para participantes de un partido
