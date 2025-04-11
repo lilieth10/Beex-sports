@@ -2,95 +2,137 @@
 
 Una aplicación móvil desarrollada con React Native que permite a los usuarios gestionar su perfil deportivo, buscar complejos deportivos, y participar en partidos adaptados a su nivel.
 
-## Características
+## Características Implementadas
 
-- **Autenticación de usuarios**: Registro e inicio de sesión
-- **Perfil de usuario**: Edición de datos y nivel de juego con barra de progreso
-- **Búsqueda de complejos deportivos**: Listado y marcado de favoritos
-- **Gestión de partidos**: Creación, búsqueda y participación
-- **Matchmaking**: Recomendación de partidos según el nivel del usuario
-- **Persistencia local**: Almacenamiento local de datos de perfil y favoritos
+- **Autenticación de usuarios**: Registro e inicio de sesión con persistencia local
+- **Perfil de usuario**: Edición de datos personales y nivel de juego con barra de progreso animada
+- **Búsqueda de complejos deportivos**: Listado con filtros por ciudad/nombre y marcado de favoritos
+- **Gestión de partidos**: Búsqueda y creación de partidos con filtros por nivel
+- **Matchmaking**: Sistema de recomendación de partidos basado en el nivel del usuario
+- **Persistencia local**: Almacenamiento seguro de datos de perfil y favoritos
 
-## Tecnologías utilizadas
+## Tecnologías Principales
 
-- React Native
-- TypeScript
-- React Navigation
-- AsyncStorage
-- Context API
+- React Native 0.79.0
+- TypeScript 5.0.4
+- React Navigation v7
+- AsyncStorage para persistencia local
+- Context API para gestión de estado
 
-## Requisitos previos
+## Requisitos del Sistema
 
 - Node.js (versión 18 o superior)
 - npm o yarn
-- JDK 11 o superior
-- Android Studio y/o Xcode (según el sistema operativo)
-- Configuración del entorno de desarrollo para React Native (https://reactnative.dev/docs/environment-setup)
+- JDK 11 o superior (para Android)
+- Android Studio (para desarrollo Android)
+- Xcode (para desarrollo iOS, solo macOS)
+- Configuración del entorno de desarrollo para React Native
 
-## Instalación
+## Instalación y Configuración
 
 1. Clonar el repositorio:
 ```bash
-git clone <url-del-repositorio>
+git clone <https://github.com/lilieth10/Desafio_tecnico>
 cd BeexSportsApp
 ```
 
-2. Instalar las dependencias:
+2. Instalar dependencias:
 ```bash
 npm install
 ```
 
-3. Para instalar en iOS (solo macOS):
+3. Configuración iOS (solo macOS):
 ```bash
 cd ios
 pod install
 cd ..
 ```
 
-## Ejecución
+## Ejecución del Proyecto
 
 ### Android
-
 ```bash
 npm run android
 ```
 
 ### iOS (solo macOS)
-
 ```bash
 npm run ios
 ```
 
-## Enfoque del proyecto
+## Arquitectura y Estructura
 
-Este proyecto fue desarrollado como parte de un desafío técnico para la posición de React Native Developer en Beex. El enfoque principal fue crear una aplicación modular, con componentes reutilizables y una navegación fluida.
+El proyecto sigue una arquitectura modular con una clara separación de responsabilidades:
 
-### Estructura del proyecto
+```
+/app
+├── /context
+│   ├── AuthContext.tsx
+│   └── FavoritesContext.tsx
+├── /navigation
+│   ├── AppNavigator.tsx
+│   ├── AuthNavigator.tsx
+│   ├── MainTabNavigator.tsx
+│   └── types.ts
+├── /screens
+│   ├── SignInScreen.tsx
+│   ├── SignUpScreen.tsx
+│   ├── ProfileScreen.tsx
+│   ├── ComplexesScreen.tsx
+│   ├── ComplexDetailsScreen.tsx
+│   ├── MatchesScreen.tsx
+│   ├── MatchDetailsScreen.tsx
+│   ├── CreateMatchScreen.tsx
+│   └── MatchmakingScreen.tsx
+├── /services
+│   ├── complexService.ts
+│   └── matchService.ts
+└── /utils
+    └── providers.tsx
+```
 
-- `/app`: Directorio principal de la aplicación
-  - `/components`: Componentes reutilizables
-  - `/context`: Context API para gestión del estado global
-  - `/navigation`: Configuración de navegación
-  - `/screens`: Pantallas de la aplicación
-  - `/services`: Servicios mockeados para simular APIs
-  - `/utils`: Utilidades varias
+### Descripción de la Estructura
 
-### Persistencia de datos
+- **/navigation**: Configuración de rutas y navegación de la aplicación
+  - `AppNavigator`: Navegación principal de la app
+  - `AuthNavigator`: Flujo de autenticación
+  - `MainTabNavigator`: Navegación con tabs post-autenticación
+  - `types.ts`: Tipos para la navegación
 
-Para la persistencia de datos se utiliza AsyncStorage, simulando lo que sería una conexión a un backend real. Los datos de perfil de usuario y complejos favoritos se guardan localmente.
+- **/screens**: Pantallas principales de la aplicación
+  - `SignInScreen` y `SignUpScreen`: Autenticación
+  - `ProfileScreen`: Gestión de perfil
+  - `ComplexesScreen` y `ComplexDetailsScreen`: Búsqueda y detalles de complejos
+  - `MatchesScreen` y `MatchDetailsScreen`: Lista y detalles de partidos
+  - `CreateMatchScreen`: Creación de nuevos partidos
+  - `MatchmakingScreen`: Sistema de recomendación
 
-### Patrones de diseño
+- **/context**: Gestión de estado global
+  - `AuthContext`: Estado de autenticación
+  - `FavoritesContext`: Gestión de complejos favoritos
 
-- **Context API**: Para gestión del estado global
-- **Custom Hooks**: Para lógica reutilizable
-- **Component Composition**: Para mantener componentes pequeños y reutilizables
-- **Mocks de Servicios**: Para simular APIs y separar la capa de datos
+- **/services**: Servicios mockeados
+  - `complexService`: Gestión de complejos deportivos
+  - `matchService`: Gestión de partidos
 
-## Mejoras futuras
+- **/utils**: Utilidades
+  - `providers.tsx`: Configuración de providers de contexto
 
-- Implementación de pruebas unitarias e integración
-- Agregar autenticación real con un backend
-- Mejorar animaciones y transiciones
-- Implementar notificaciones para partidos próximos
-- Integración con mapas para visualizar ubicación de complejos
-- Agregar chat interno para participantes de un partido
+## Persistencia de Datos
+
+La aplicación utiliza AsyncStorage para mantener los datos del usuario y sus preferencias localmente. Esto incluye:
+- Información del perfil
+- Complejos favoritos
+- Estado de autenticación
+
+## Mejoras Futuras
+
+- Implementación de pruebas unitarias y de integración
+- Integración con backend real
+- Mejora de animaciones y transiciones
+- Sistema de notificaciones para partidos
+- Integración con mapas para visualización de complejos
+- Sistema de chat para participantes
+- Optimización de rendimiento
+- agregar componentes reutilizables
+
