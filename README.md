@@ -32,7 +32,7 @@ Una aplicación móvil desarrollada con React Native que permite a los usuarios 
 
 1. Clonar el repositorio:
 ```bash
-git clone <https://github.com/lilieth10/Desafio_tecnico>
+git clone <https://github.com/lilieth10/Beex-sports>
 cd BeexSportsApp
 ```
 
